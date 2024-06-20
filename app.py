@@ -33,7 +33,7 @@ def login_is_required(function):
 
 @app.route("/login")
 def login():
-    authorization_url, state = flow.authorization_url()
+    authorization_url, state = flow.authorization_url(prompt='select_account') # esse prompt obriga sempre o usuario a escolher a conta a logar, se for retirado ele procurar por uma sessão já ativa
     session["state"] = state
     return redirect(authorization_url)  # Redireciona o usuário para a página de autorização do Google
 
